@@ -1,0 +1,50 @@
+.i-contenedor {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.i-row {
+    display: flex;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.i-col {
+    overflow-y: auto;
+}
+
+.i-col:first-child {
+    flex: 1;
+    padding: 15px;
+}
+
+.i-col:last-child {
+    flex: 4;
+}
+
+@media (max-width: 1300px) {
+    .i-col:last-child {
+        flex: 3;
+    } 
+}
+
+@media (max-width: 970px) {
+    .i-col:last-child {
+        flex: 2;
+    } 
+}
+
+@media (max-width: 750px) {
+    .i-contenedor {
+        height: auto;
+    }
+    .i-row {
+        flex-direction: column;
+        height: auto;
+    }
+    .i-col {
+        overflow: hidden;
+    }
+}
