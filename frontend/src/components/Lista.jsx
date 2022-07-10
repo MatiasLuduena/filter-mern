@@ -4,10 +4,10 @@ const Lista = ({lista}) => {
   return (
     <div className="l-contenedor">
       {
-        lista.map(item => (
-          <div className="l-card" key={item.id}>
+        lista.map((item, index) => (
+          <div className="l-card" key={index}>
             <div className="lc-header">
-              <img src={item.img} alt={item.titulo} />
+              <img src={item.imagen} alt={item.titulo} />
             </div>
             <div className="lc-body">
               <div className='lc-b_top'>
@@ -20,7 +20,7 @@ const Lista = ({lista}) => {
             </div>
             <div className="lc-footer">
               <span>{item.puntuacion}★</span>
-              <span>${item.precio}</span>
+              <span>${parseFloat(item.precio).toFixed(2)}</span>
             </div>
           </div>
         ))

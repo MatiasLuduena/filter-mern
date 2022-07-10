@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './inicio.css';
+import axios from 'axios';
 
 // Componentes
 import Buscar from '../components/Buscar';
@@ -7,15 +8,12 @@ import Filtro from '../components/Filtro';
 import Lista from '../components/Lista';
 import NoProductos from '../components/NoProductos';
 
-// data
-import { marcas, productos } from '../data/data';
-
 const Inicio = () => {
   // Filtro component
   const [selectCategoria, setSelectCategoria] = useState(null);
   const [selectPuntuacion, setSelectPuntuacion] = useState(null);
-  const [brand, setBrand] = useState(marcas);
-  const [selectPrecio, setSelectPrecio] = useState([0, 100]);
+  const [brand, setBrand] = useState([]);
+  const [selectPrecio, setSelectPrecio] = useState([0, 999]);
   const [buscar, setBuscar] = useState('');
   const [noProducts, setNoProducts] = useState(false);
 
@@ -37,10 +35,11 @@ const Inicio = () => {
   }
 
   // Lista component
-  const [lista, setLista] = useState(productos);
+  const [lista, setLista] = useState([]);
 
-  function filtro() {
-    let productosFiltrados = productos;
+  async function filtro() {
+    let pFiltrados = await axios.get('/api/productos');
+    let productosFiltrados = pFiltrados.data;
 
     // puntuación
     if (selectPuntuacion) {
@@ -76,6 +75,11 @@ const Inicio = () => {
 
   useEffect(() => {
     filtro();
+    async function fetchMarcas() {
+      const mFetch = await axios.get('/api/marcas');
+      setBrand(mFetch.data);
+    }
+    fetchMarcas();
   }, [selectPuntuacion, selectCategoria, selectPrecio, buscar]);
   
   return (

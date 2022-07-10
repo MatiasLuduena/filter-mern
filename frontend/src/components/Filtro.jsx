@@ -1,4 +1,6 @@
+import React, { useState, useEffect } from 'react';
 import '../styles/filtro.css';
+import axios from 'axios';
 
 // MUI
 import { 
@@ -6,7 +8,7 @@ import {
 } from '@mui/material';
 
 // data
-import { categorias, puntuacion } from '../data/data';
+import { puntuacion } from '../data/data';
 
 const Filtro = ({
   selectCategoria, selectToggleC,
@@ -14,6 +16,34 @@ const Filtro = ({
   changeChecked, marcas,
   changePrecio, selectPrecio
 }) => {
+  const [categorias, setCategorias] = useState([]);
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    async function fetchCategorias() {
+      const cLista = await axios.get('/api/categorias');
+      setCategorias(cLista.data);
+    }
+    fetchCategorias();
+
+    async function fetchProductos() {
+      const plista = await axios.get('/api/productos');
+      setProductos(plista.data);
+    }
+    fetchProductos();
+  }, []);
+
+  // Max Precio
+  let maxPrecioArray = [];
+
+  productos.forEach(({precio}) => {
+    maxPrecioArray.push(precio);
+  });
+  
+  const maxPrecio = maxPrecioArray.reduce((a, b) => {
+    return Math.max(a, b);
+  }, 0);
+
   return (
     <div className='f-contenedor'>
       <div className='f-grupo'>
@@ -21,8 +51,8 @@ const Filtro = ({
         <div className='f-button'>
           <ToggleButtonGroup value={selectCategoria} onChange={selectToggleC} exclusive>
             {
-              categorias.map((item) => (
-                <ToggleButton key={item.id} value={item.valor}>{item.label}</ToggleButton>
+              categorias.map((item, index) => (
+                <ToggleButton key={index} value={item.valor}>{item.label}</ToggleButton>
               ))
             }
           </ToggleButtonGroup>
@@ -46,8 +76,8 @@ const Filtro = ({
         <h3>Marca</h3>
         <div className='f-button'>
             {
-              marcas.map((item) => (
-                <FormControlLabel key={item.id}
+              marcas.map((item, index) => (
+                <FormControlLabel key={index}
                   control={<Checkbox/>}
                   checked={item.checked} label={item.label} 
                   onChange={() => changeChecked(item.id)} 
@@ -61,7 +91,7 @@ const Filtro = ({
         <h3>Rango de precio</h3>
         <div className='f-buttom'>
           <Slider 
-            min={0} max={100} onChange={changePrecio} 
+            min={0} max={maxPrecio} onChange={changePrecio} 
             value={selectPrecio} valueLabelDisplay="auto"
           />
         </div>
