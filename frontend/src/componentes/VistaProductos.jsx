@@ -1,10 +1,10 @@
-import '../styles/lista.css';
+import '../estilos/vistaproductos.css';
 
-const Lista = ({lista}) => {
+const VistaProductos = ({listaDeProductos}) => {
   return (
     <div className="l-contenedor">
       {
-        lista.map((item, index) => (
+        listaDeProductos.map((item, index) => (
           <div className="l-card" key={index}>
             <div className="lc-header">
               <img src={item.imagen} alt={item.titulo} />
@@ -15,7 +15,6 @@ const Lista = ({lista}) => {
               </div>
               <div className='lc-b_bottom'>
                 <span>{item.categoria}</span>
-                <span>{item.marca}</span>
               </div>
             </div>
             <div className="lc-footer">
@@ -29,4 +28,4 @@ const Lista = ({lista}) => {
   );
 }
 
-export default Lista;
+export default VistaProductos;

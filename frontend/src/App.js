@@ -1,9 +1,9 @@
-import Inicio from "./pages/Inicio";
+import Home from "./home/Home";
 
 const App = () => {
   return (
     <div className="App">
-      <Inicio />
+     <Home />
     </div>
   );
 }

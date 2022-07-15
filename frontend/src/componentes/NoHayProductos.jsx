@@ -1,6 +1,6 @@
-import '../styles/noproductos.css';
+import '../estilos/nohayproductos.css';
 
-const NoProductos = () => {
+const NoHayProductos = () => {
   return (
     <div className='not-contenedor'>
         <h3>No hay productos que coincidan con tu busqueda.</h3>
@@ -8,4 +8,4 @@ const NoProductos = () => {
   );
 }
 
-export default NoProductos;
+export default NoHayProductos;

@@ -1,18 +1,15 @@
 export const categorias = [
     {
         id: 1,
-        valor: 'Hombres',
-        label: 'Hombres'
+        valor: 'Hombres'
     },
     {
         id: 2,
-        valor: 'Mujeres',
-        label: 'Mujeres'
+        valor: 'Mujeres'
     },
     {
         id: 3,
-        valor: 'Niños',
-        label: 'Niños'
+        valor: 'Niños'
     }
 ];
 
@@ -44,68 +41,53 @@ export const puntuacion = [
     },
 ];
 
-export const marcas = [
-    {
-        id: 1,
-        label: 'Adidas',
-        checked: false
-    },
-    {
-        id: 2,
-        label: 'Converse',
-        checked: false
-    },
-    {
-        id: 3,
-        label: 'Nike',
-        checked: false
-    }
-];
-
 export const productos = [
     {
         id: 1,
         titulo: 'Producto uno',
         categoria: 'Hombres',
-        marca: 'Nike',
         puntuacion: 5,
         precio: 100,
-        img: '/images/p-1.jpg'
+        imagen: '/imagenes/p-1.jpg'
     },
     {
         id: 2,
         titulo: 'Producto dos',
         categoria: 'Mujeres',
-        marca: 'Converse',
         puntuacion: 3,
         precio: 40,
-        img: '/images/p-2.jpg'
+        imagen: '/imagenes/p-2.jpg'
     },
     {
         id: 3,
         titulo: 'Producto tres',
         categoria: 'Mujeres',
-        marca: 'Nike',
         puntuacion: 4,
         precio: 65,
-        img: '/images/p-3.jpg'
+        imagen: '/imagenes/p-3.jpg'
     },
     {
         id: 4,
         titulo: 'Producto cuatro',
         categoria: 'Hombres',
-        marca: 'Adidas',
         puntuacion: 5,
         precio: 70,
-        img: '/images/p-4.jpg'
+        imagen: '/imagenes/p-4.jpg'
     },
     {
         id: 5,
         titulo: 'Producto cinco',
         categoria: 'Hombres',
-        marca: 'Adidas',
         puntuacion: 4,
         precio: 80,
-        img: '/images/p-5.jpg'
+        imagen: '/imagenes/p-5.jpg'
+    },
+    {
+        id: 6,
+        titulo: 'Producto seis',
+        categoria: 'Hombres',
+        puntuacion: 5,
+        precio: 120,
+        imagen: '/imagenes/p-6.jpg'
     },
 ]; 
